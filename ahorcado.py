@@ -82,6 +82,9 @@ WORDS = [
     'vaca',
     'teclado'
 ]
+
+repeated_letters=[]
+
 def random_word():
     idx = random.randint(0, len(WORDS) -1)
     return WORDS[idx]
@@ -102,14 +105,23 @@ def run():
     while True:
         display_board(hidden_word, tries)
         current_letter = str(input('Escoge una letra: '))
-
+        
+        if current_letter in repeated_letters:
+           print('Ya elegiste esa letra, prueba con otra')
+       
         letter_indexes = []
         for idx in range(len(word)):
             if word[idx] == current_letter:
                 letter_indexes.append(idx)
 
+        
         if len(letter_indexes) == 0:
+            repeated_letters.append(current_letter)          
+            # print('repetidas',repeated_letters)
             tries += 1
+
+    
+       
 
             if tries == 7:
                 display_board(hidden_word, tries)
