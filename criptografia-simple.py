@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import sys
 
 KEYS = {
     'a': 'w',
@@ -134,7 +135,13 @@ def run():
             print(decypher_message)
 
         elif command == 's':
+            salir = str(input('estas seguro ? s / n:' ))
+            if salir == 's':
+                sys.exit()
+            else:
+                run()
             print('salir')
+            break
         else:
             print('¡Comando no encontrado!')
 
